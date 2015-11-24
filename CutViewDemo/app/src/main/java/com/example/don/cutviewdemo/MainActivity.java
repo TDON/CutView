@@ -16,7 +16,7 @@ import android.widget.ImageView;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private ImageView resultView;
-    private Button toCutBtn;
+    private Button ovalCutBtn,rectCutBtn,roundRectBtn;
     private CutFragment cutFragment;
 
     private Handler handler = new Handler() {
@@ -42,24 +42,42 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void init() {
 
         resultView = (ImageView) findViewById(R.id.resultView);
-        toCutBtn = (Button) findViewById(R.id.toCutbtn);
-        toCutBtn.setOnClickListener(this);
+        ovalCutBtn = (Button) findViewById(R.id.ovalCutbtn);
+        ovalCutBtn.setOnClickListener(this);
+
+        rectCutBtn=(Button)findViewById(R.id.rectCutbtn);
+        rectCutBtn.setOnClickListener(this);
+
+        roundRectBtn=(Button)findViewById(R.id.roundRectCutbtn);
+        roundRectBtn.setOnClickListener(this);
 
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.toCutbtn:
 
-                cutFragment=new CutFragment();
-                cutFragment.setHandler(handler);
-                getFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, cutFragment).addToBackStack("Cut").commit();
+        cutFragment=new CutFragment();
+        cutFragment.setHandler(handler);
+
+        switch (v.getId()) {
+            case R.id.ovalCutbtn:
+
+                cutFragment.setCutPathType(CutView.PathType.OVAL);
 
                 break;
 
+            case  R.id.rectCutbtn:
+
+                cutFragment.setCutPathType(CutView.PathType.RECT);
+                break;
+            case R.id.roundRectCutbtn:
+
+                cutFragment.setCutPathType(CutView.PathType.ROUNDRECT);
+                break;
+
         }
+        getFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, cutFragment).addToBackStack("Cut").commit();
     }
 }
