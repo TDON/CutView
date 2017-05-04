@@ -2,6 +2,7 @@
 Android 头像剪切，圆形
 
 使用示例：
+```
  cutView=(CutView)view.findViewById(R.id.cutview);
         cutView.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.hand));
         cutView.setCutListener(this);//设置剪裁监听，用于剪裁完成后获取圆形头像
@@ -22,9 +23,10 @@ Android 头像剪切，圆形
 
 //        cutView.setPathType(CutView.PathType.ROUNDRECT);//设置剪切类型为矩形，那么矩形的宽高就是上面的设置的CutRadius的2倍，也就是300px。
 //        cutView.setRoundRectRadius(10.0f);//如果剪切类型为圆角矩形，需要设置圆角矩形的圆角半径，可不设置默认是3.0f
-
+```
 
 布局文件示例：
+```
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -65,4 +67,4 @@ Android 头像剪切，圆形
 
 
 </RelativeLayout>
-
+```
